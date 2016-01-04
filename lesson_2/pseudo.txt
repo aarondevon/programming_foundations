@@ -26,7 +26,7 @@ Start
 
 END
 
- Casual 2.
+Casual 2.
 
  Given an array of strings
  Create a  method that takes in an array of strings
@@ -42,12 +42,12 @@ START
   GIVEN an array of strings called str
 
    SET i to 0
-  method concat
-   WHILE i < str.length
+  method concat(arr)
+   WHILE i < arr.length
     IF i == 0
-      SET big_str = str[0]
+      SET big_str = arr[0]
     ELSE
-    big_str = big_str + " " + str[i]
+    big_str = big_str + " " + arr[i]
 
      i += i
 
@@ -56,6 +56,9 @@ START
 END
 
 Casual 3.
+  Given an array of inegers
+  Creat a method that takes in an array of integers as
+
 
 
 
