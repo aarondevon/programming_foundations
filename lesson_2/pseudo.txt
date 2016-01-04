@@ -39,7 +39,7 @@ Formal 2.
 
 START
 
-  GIVEN an array of strings called str
+  Given an array of strings called str
 
    SET i to 0
   method concat(arr)
@@ -57,7 +57,26 @@ END
 
 Casual 3.
   Given an array of inegers
-  Creat a method that takes in an array of integers as
+  Create a method that takes in an array of integers
+    Create a variable set to 0
+    Iterate through each index on by one
+    if the variable isn't divisible by two print the index
+
+Formal 3.
+
+START
+
+Given an array of integers called nums
+
+SET i to 0
+
+method skip(arr)
+  WHILE i < arr.length
+    IF i % 2 != 0
+      PRINT arr.[i]
+
+      i += i
+END
 
 
 
