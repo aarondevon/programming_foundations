@@ -29,6 +29,7 @@ END
  Casual 2.
 
  Given an array of strings
+ Create a  method that takes in an array of strings
  Itterate through the array one by one
  Take the first index and assign it to a variable
  Take each additionl index and add it to the array
@@ -38,8 +39,23 @@ Formal 2.
 
 START
 
-GIVEN an array of strings called str
+  GIVEN an array of strings called str
 
- SET i to 0
- WHILE i < str.length
-   SET
+   SET i to 0
+  method concat
+   WHILE i < str.length
+    IF i == 0
+      SET big_str = str[0]
+    ELSE
+    big_str = big_str + " " + str[i]
+
+     i += i
+
+  PRINT big str
+
+END
+
+Casual 3.
+
+
+
