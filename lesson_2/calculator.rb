@@ -3,10 +3,10 @@ def prompt(message)
 end
 
 def number?(num)
-  if num.is_a?(Integer)
+  if num =~ /\d \. /
+    num = num.to_f
+  elsif num =~ /\d/
     num.to_i
-  elsif num.is_a?(Float)
-    num.to_f
   end
 end
 
