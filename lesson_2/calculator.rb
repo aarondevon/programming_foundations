@@ -26,7 +26,7 @@ loop do
   name = Kernel.gets().chomp()
 
   if name.empty?()
-  prompt("Make sure you enter your name.")
+    prompt("Make sure you enter your name.")
   else
     break
   end
@@ -57,7 +57,7 @@ loop do # main loop
       prompt("Sorry, that doesn't seem to be a valid number")
     end
   end
-    # Doesn't have to be MSG, could be anything. They are delimiters
+  # Doesn't have to be MSG, could be anything. They are delimiters
   operator_prompt = <<-MSG
     What operation would you like to perform?
     1) add
@@ -68,7 +68,7 @@ loop do # main loop
 
   prompt(operator_prompt)
 
-operator = ''
+  operator = ''
   loop do
     operator = Kernel.gets().chomp()
     if %w(1 2 3 4).include?(operator)
@@ -82,14 +82,14 @@ operator = ''
 
   result = case operator
            when '1'
-            result = number1.to_i() + number2.to_i()
+             result = number1.to_i() + number2.to_i()
            when '2'
-            result = number1.to_i() - number2.to_i()
+             result = number1.to_i() - number2.to_i()
            when '3'
-            result = number1.to_i() * number2.to_i()
+             result = number1.to_i() * number2.to_i()
            when '4'
-            result = number1.to_f() / number2.to_f()
-          end
+             result = number1.to_f() / number2.to_f()
+           end
 
   prompt("the result is #{result}")
 
