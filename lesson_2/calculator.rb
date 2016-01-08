@@ -12,7 +12,7 @@ def number?(num)
 end
 
 def operation_to_message(op)
-  case op
+  symbol = case op
   when '1'
     'Adding'
   when '2'
@@ -22,6 +22,8 @@ def operation_to_message(op)
   when '4'
     'Dividing'
   end
+  random = "Randon code to test if the case statement still works"
+  symbol
 end
 
 prompt("Welcome to Calulator! Please enter your name.")
