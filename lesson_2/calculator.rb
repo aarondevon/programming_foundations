@@ -3,10 +3,11 @@ def prompt(message)
 end
 
 def number?(num)
-  if num =~ /\d \. /
-    num = num.to_f
-  elsif num =~ /\d/
-    num.to_i
+  if num.to_i.to_s == num
+    return num.to_i
+
+  elsif num.to_f.to_s == num
+    return num.to_f
   end
 end
 
@@ -45,6 +46,7 @@ loop do # main loop
     number1 = Kernel.gets().chomp()
 
     if number?(number1)
+      number1 = number?(number1)
       break()
     else
       prompt("Sorry, that doesn't seem to be a valid number")
@@ -56,6 +58,7 @@ loop do # main loop
     number2 = Kernel.gets().chomp()
 
     if number?(number2)
+      number2 = number?(number2)
       break()
     else
       prompt("Sorry, that doesn't seem to be a valid number")
@@ -86,13 +89,13 @@ loop do # main loop
 
   result = case operator
            when '1'
-             result = number1.to_i() + number2.to_i()
+             result = number1 + number2
            when '2'
-             result = number1.to_i() - number2.to_i()
+             result = number1 - number2
            when '3'
-             result = number1.to_i() * number2.to_i()
+             result = number1 * number2
            when '4'
-             result = number1.to_f() / number2.to_f()
+             result = number1 / number2
            end
 
   prompt("the result is #{result}")
