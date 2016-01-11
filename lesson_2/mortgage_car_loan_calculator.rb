@@ -1,3 +1,12 @@
+# The following formula is used to calculate the fixed monthly payment
+# (P) required to fully amortize a loan of L dollars over a term of
+# n months at a monthly interest rate of c.
+# [If the quoted rate is 6%, for example, c is .06/12 or .005]
+def fixed_monthly_payment(l, c, n)
+  payment = l[c(1 + c)**n - 1]
+  return payment
+end
+
 puts "Hi! Welcome to the Mortgage and Auto Loan Calculator."
 puts "Please enter your first name."
 name = gets.chomp
@@ -28,3 +37,9 @@ while confirm == false
     end
   end
 end
+puts "Please enter the loan amount #{name}"
+loan = gets.chomp
+puts "Great, now I'll need the term of the loan in months"
+months = gets.chomp
+put "And finally I will need the interest APR"
+interest = gets.chomp
