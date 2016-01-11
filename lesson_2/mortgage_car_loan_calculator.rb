@@ -11,7 +11,7 @@ while confirm == false
     puts "You selected mortgage, is that correct?\nFor Yes type 1\nFor No type 2"
     y_or_n = gets.chomp
     if y_or_n == "1"
-      break
+      confirm = true
     else
       puts "Okay, What woud you like then?\nFor mortgage type 1\nFor auto type 2"
       auto_mortgage = gets.chomp
@@ -21,7 +21,7 @@ while confirm == false
     puts "You selected auto, is that correct\nFor Yes type 1\nFor No type 2"
     y_or_n = gets.chomp
     if y_or_n == "1"
-      break
+      confirm = true
     else
       puts "Okay, What woud you like then?\nFor mortgage type 1\nFor auto type 2"
       auto_mortgage = gets.chomp
