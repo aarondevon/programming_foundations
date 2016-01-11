@@ -41,5 +41,5 @@ puts "Please enter the loan amount #{name}"
 loan = gets.chomp
 puts "Great, now I'll need the term of the loan in months"
 months = gets.chomp
-put "And finally I will need the interest APR"
+puts "And finally I will need the interest APR"
 interest = gets.chomp
