@@ -3,7 +3,7 @@
 # n months at a monthly interest rate of c.
 # [If the quoted rate is 6%, for example, c is .06/12 or .005]
 def fixed_monthly_payment(l, c, n)
-  payment = l[c(1 + c)**n - 1]
+  payment = l[c(1 + c)**n / [1 + c]**n - 1]
   return payment
 end
 
@@ -38,8 +38,10 @@ while confirm == false
   end
 end
 puts "Please enter the loan amount #{name}"
-loan = gets.chomp
+loan = gets.chomp.to_i
 puts "Great, now I'll need the term of the loan in months"
-months = gets.chomp
-puts "And finally I will need the interest APR"
-interest = gets.chomp
+months = gets.chomp.to_i
+puts "And finally I will need the APR"
+interest = gets.chomp.to_f
+
+puts "Your monthly payment will be #{fixed_monthly_payment(loan, interest, months)}"
