@@ -3,7 +3,8 @@
 # n months at a monthly interest rate of c.
 # [If the quoted rate is 6%, for example, c is .06/12 or .005]
 def fixed_monthly_payment(l, c, n)
-  payment = l[c(1 + c)**n / [1 + c]**n - 1]
+  payment = l * (c * (1 + c)**n) / ((1 + c)**n - 1)
+  puts c
   return payment
 end
 
