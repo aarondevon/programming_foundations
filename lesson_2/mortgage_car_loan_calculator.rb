@@ -5,7 +5,7 @@
 def fixed_monthly_payment(l, c, n)
   payment = l * (c * (1 + c)**n) / ((1 + c)**n - 1)
   puts c
-  return payment
+  payment.round(2)
 end
 
 puts "Hi! Welcome to the Mortgage and Auto Loan Calculator."
@@ -43,6 +43,7 @@ loan = gets.chomp.to_i
 puts "Great, now I'll need the term of the loan in months"
 months = gets.chomp.to_i
 puts "And finally I will need the APR"
-interest = gets.chomp.to_f
+puts "Example for 5% 5"
+interest = gets.chomp.to_f / 100
 
-puts "Your monthly payment will be #{fixed_monthly_payment(loan, interest, months)}"
+puts "Your monthly payment will be $#{fixed_monthly_payment(loan, interest, months)}"
