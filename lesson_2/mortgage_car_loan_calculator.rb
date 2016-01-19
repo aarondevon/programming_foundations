@@ -1,10 +1,9 @@
 # The following formula is used to calculate the fixed monthly payment
-# (P) required to fully amortize a loan of "loan" dollars over a term of
-# n months at a monthly interest rate of c.
-# [If the quoted rate is 6%, for example, c is .06/12 or .005]
-def fixed_monthly_payment(l, c, n)
-  payment = l * (c * (1 + c)**n) / ((1 + c)**n - 1)
-  puts c
+# (payment) required to fully amortize a loan of "loan" dollars over a term of
+# "duration" months at a monthly interest rate of "interest".
+# [If the quoted rate is 6%, for example, "interest" is .06/12 or .005]
+def fixed_monthly_payment(loan, interest, duration)
+  payment = loan * (interest * (1 + interest)**duration) / ((1 + interest)**duration - 1)
   payment.round(2)
 end
 
