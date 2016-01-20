@@ -9,6 +9,7 @@ end
 
 def number?(number)
   number == number.to_i || number.to_f
+  number
 end
 
 def prompt(str)
@@ -52,14 +53,21 @@ loop do
       auto_mortgage = gets.chomp
     end
   end
-  prompt("Please enter the loan amount #{name}")
-  loan_amount = gets.chomp.to_i
-  prompt("Great, now I'll need the term of the loan in months")
-  loan_duration_in_months = gets.chomp.to_i
-  prompt("And finally I will need the APR")
-  prompt("Example for 5% 5")
-  interest_amount = gets.chomp.to_f / 100 / 12
-  prompt("Your monthly payment will be $#{fixed_monthly_payment(loan_amount, interest_amount, loan_duration_in_months)}")
+  loop do
+    prompt("Please enter the loan amount #{name}")
+    loan_amount = gets.chomp.to_i
+    prompt("Great, now I'll need the term of the loan in months")
+    loan_duration_in_months = gets.chomp.to_i
+    prompt("And finally I will need the APR")
+    prompt("Example for 5% 5")
+    interest_amount = gets.chomp.to_f / 100 / 12
+    if loan_amount == number?(loan_amount) && interest_amount == number?(interest_amount) && loan_duration_in_months == number?(loan_duration_in_months)
+      prompt("Your monthly payment will be $#{fixed_monthly_payment(loan_amount, interest_amount, loan_duration_in_months)}")
+      break
+    else
+      prompt("Sorry, one of your inputs was not a valid number.\n   Please try again.")
+    end
+  end
   prompt("Would you like to enter another loan?\n   For Yes type 1\n   For No type 2")
   another_loan = gets.chomp
   if another_loan == "1"
