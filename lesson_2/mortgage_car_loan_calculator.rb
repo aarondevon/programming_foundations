@@ -7,54 +7,65 @@ def fixed_monthly_payment(loan, interest, duration)
   payment.round(2)
 end
 
-puts "Hi! Welcome to the Mortgage and Auto Loan Calculator."
-puts "Please enter your first name."
+def number?(number)
+  number == number.to_i || number.to_f
+end
+
+def prompt(str)
+  puts "=> #{str}"
+end
+
+prompt("Hi! Welcome to the Mortgage and Auto Loan Calculator.")
+prompt("Please enter your first name.")
 name = gets.chomp
+prompt("Great #{name}! Let's get started.")
+prompt("In order to help you I will need to collect some information.\n   First, is this a mortgage or auto loan?\n   For mortgage type 1\n   For auto type 2")
 
 loop do
-  puts "Great #{name}! Let's get started."
-  puts "In order to help you I will need to collect some information.\nFirst, is this a mortgage or auto loan?\nFor mortgage type 1\nFor auto type 2"
   auto_mortgage = gets.chomp
   confirm = false
   while confirm == false
     if auto_mortgage == "1"
-      puts "You selected mortgage, is that correct?\nFor Yes type 1\nFor No type 2"
+      prompt("You selected mortgage, is that correct?\n   For Yes type 1\n  For No type 2")
       y_or_n = gets.chomp
       if y_or_n == "1"
         confirm = true
       elsif y_or_n == "2"
-        puts "Okay, What woud you like then?\nFor mortgage type 1\nFor auto type 2"
+        prompt("Okay, What woud you like then?\n   For mortgage type 1\n   For auto type 2")
         auto_mortgage = gets.chomp
       else
-        puts "Sorry, That is not a valid option."
+        prompt("Sorry, That is not a valid option.")
       end
     elsif auto_mortgage == "2"
-      puts "You selected auto, is that correct\nFor Yes type 1\nFor No type 2"
+      prompt("You selected auto, is that correct\n   For Yes type 1\n   For No type 2")
       y_or_n = gets.chomp
       if y_or_n == "1"
         confirm = true
       elsif y_or_n == "2"
-        puts "Okay, What woud you like then?\nFor mortgage type 1\nFor auto type 2"
+        prompt("Okay, What woud you like then?\n   For mortgage type 1\n   For auto type 2")
         auto_mortgage = gets.chomp
       else
-        puts "Sorry, That is not a valid option."
+        prompt("Sorry, That is not a valid option.")
       end
     else
-      puts "Sorry, That is not a valid option.\nauto loan?\nFor mortgage type 1\nFor auto type 2"
+      prompt("Sorry, That is not a valid option.\n   For mortgage type 1\n   For auto type 2")
       auto_mortgage = gets.chomp
     end
   end
-  puts "Please enter the loan amount #{name}"
+  prompt("Please enter the loan amount #{name}")
   loan_amount = gets.chomp.to_i
-  puts "Great, now I'll need the term of the loan in months"
+  prompt("Great, now I'll need the term of the loan in months")
   loan_duration_in_months = gets.chomp.to_i
-  puts "And finally I will need the APR"
-  puts "Example for 5% 5"
+  prompt("And finally I will need the APR")
+  prompt("Example for 5% 5")
   interest_amount = gets.chomp.to_f / 100 / 12
-  puts "Your monthly payment will be $#{fixed_monthly_payment(loan_amount, interest_amount, loan_duration_in_months)}"
-  puts "Would you like to enter another loan?\nFor Yes type 1\nFor No type 2"
+  prompt("Your monthly payment will be $#{fixed_monthly_payment(loan_amount, interest_amount, loan_duration_in_months)}")
+  prompt("Would you like to enter another loan?\n   For Yes type 1\n   For No type 2")
   another_loan = gets.chomp
-  if another_loan == "2"
+  if another_loan == "1"
+    prompt("I am be happy to help you again #{name}!\n   Is this a mortgage or auto loan?\n   For mortgage type 1\n   For auto type 2")
+  else
+    prompt("Thank you for using the calculator!")
     break
   end
 end
