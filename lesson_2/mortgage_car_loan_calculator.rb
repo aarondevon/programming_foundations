@@ -54,7 +54,7 @@ loop do
     end
   end
   loop do
-    prompt("Please enter the loan amount #{name}")
+    prompt("Please enter the loan amount #{name}. Example 12345.\n   Please do not include '$' or ','.")
     loan_amount = gets.chomp.to_i
     prompt("Great, now I'll need the term of the loan in months")
     loan_duration_in_months = gets.chomp.to_i
