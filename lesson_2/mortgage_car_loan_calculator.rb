@@ -14,8 +14,7 @@ def fixed_monthly_payment(loan, interest, duration)
 end
 
 def number?(number)
-  number == number.to_i || number.to_f
-  number
+  /^\d+$/.match(number) || /\d/.match(number) && /^\d*\.?\d*$/.match(number)
 end
 
 def prompt(str)
@@ -33,6 +32,7 @@ loop do
   loan_type = ""
   loop do
     loan_type = gets.chomp
+
     if loan_type == loan_type_checker?(loan_type)
       break
     else
@@ -68,17 +68,48 @@ loop do
       end
   end
 
-  loop do
-    prompt("Please enter the loan amount #{name}. Example 12345.\n   Please do not include '$' or ','.")
-    loan_amount = gets.chomp.to_i
+  prompt("Please enter the loan amount #{name}. Example 12345.\n   Please do not include '$' or ','.")
 
-    prompt("Great, now I'll need the term of the loan in months")
-    months = gets.chomp.to_i
+  loop do
+    loan_amount = gets.chomp
+
+    if number?(loan_amount)
+      break
+    else
+      prompt("Sorry that is not a number.\n   Please input a valid number.")
+      prompt("Example 12345.\n   Please do not include '$' or ','.")
+    end
+  end
+
+  prompt("Great, now I'll need the term of the loan in months")
+
+  loop do
+    months = gets.chomp
+
+    if number?(months)
+      break
+    else
+      prompt("Sorry that is not a number.\n   Please input the length of the loan in the number of months.")
+    end
+  end
 
     prompt("And finally I will need the APR")
     prompt("Example for 5% type 5 or for 3.5% type 3.5")
+
+  loop do
     yearly_interest_rate = gets.chomp.to_f / 100
     monthly_interest_rate = yearly_interest_rate / 12
+
+    if number?(monthly_interest_rate)
+      yearly_interest_rate.to_f / 100
+      monthly_interest_rate = yearly_interest_rate / 12
+      break
+    else
+      prompt("Sorry that is not a number.\n   Please input a valid interest rate.")
+      prompt("Example for 5% type 5 or for 3.5% type 3.5")
+    end
+  end
+
     if loan_type == "1"
       loan_type = "Mortgage"
     else
