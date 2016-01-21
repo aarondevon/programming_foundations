@@ -76,7 +76,7 @@ loop do
     months = gets.chomp.to_i
 
     prompt("And finally I will need the APR")
-    prompt("Example for 5% 5")
+    prompt("Example for 5% type 5 or for 3.5% type 3.5")
     yearly_interest_rate = gets.chomp.to_f / 100
     monthly_interest_rate = yearly_interest_rate / 12
     if loan_type == "1"
