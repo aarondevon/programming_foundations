@@ -40,35 +40,32 @@ loop do
     end
   end
 
-  confirm = false
+  while loan_type == "1"
+    prompt("You selected mortgage, is that correct?\n   For Yes type 1\n   For No type 2")
+    loan_type_confirmation = gets.chomp
 
-  while confirm == false
-    if loan_type == "1"
-      prompt("You selected mortgage, is that correct?\n   For Yes type 1\n   For No type 2")
-      loan_type_confirmation = gets.chomp
+    if loan_type_confirmation == "1"
+      break
+    elsif loan_type_confirmation == "2"
+      prompt("Okay, What woud you like then?\n   For mortgage type 1\n   For auto type 2")
+      loan_type = gets.chomp
+    else
+      prompt("Sorry, That is not a valid option.")
+    end
+  end
 
-      if loan_type_confirmation == "1"
-        confirm = true
-      elsif loan_type_confirmation == "2"
-        prompt("Okay, What woud you like then?\n   For mortgage type 1\n   For auto type 2")
-        loan_type = gets.chomp
-      else
-        prompt("Sorry, That is not a valid option.")
-      end
-
-    elsif loan_type == "2"
+  while loan_type == "2"
       prompt("You selected auto, is that correct\n   For Yes type 1\n   For No type 2")
       loan_type_confirmation = gets.chomp
 
       if loan_type_confirmation == "1"
-        confirm = true
+        break
       elsif loan_type_confirmation == "2"
         prompt("Okay, What woud you like then?\n   For mortgage type 1\n   For auto type 2")
         loan_type = gets.chomp
       else
         prompt("Sorry, That is not a valid option.")
       end
-    end
   end
 
   loop do
