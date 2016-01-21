@@ -39,8 +39,8 @@ loop do
       prompt("Sorry, That is not a valid option.\n   For mortgage type 1\n   For auto type 2")
     end
   end
-  confirm = false
 
+  confirm = false
 
   while confirm == false
     if loan_type == "1"
@@ -82,9 +82,14 @@ loop do
     prompt("Example for 5% 5")
     yearly_interest_rate = gets.chomp.to_f / 100
     monthly_interest_rate = yearly_interest_rate / 12
+    if loan_type == "1"
+      loan_type = "Mortgage"
+    else
+      loan_type = "Auto"
+    end
 
     if loan_amount == number?(loan_amount) && monthly_interest_rate == number?(monthly_interest_rate) && months == number?(months)
-      prompt("Your monthly payment will be $#{fixed_monthly_payment(loan_amount, monthly_interest_rate, months)}")
+      prompt("Your monthly #{loan_type} payment will be $#{fixed_monthly_payment(loan_amount, monthly_interest_rate, months)}")
       break
     else
       prompt("Sorry, one of your inputs was not a valid number.\n   Please try again.")
