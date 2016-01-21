@@ -23,54 +23,55 @@ prompt("Great #{name}! Let's get started.")
 prompt("In order to help you I will need to collect some information.\n   First, is this a mortgage or auto loan?\n   For mortgage type 1\n   For auto type 2")
 
 loop do
-  auto_mortgage = gets.chomp
+  loan_type = gets.chomp
   confirm = false
   while confirm == false
-    if auto_mortgage == "1"
-      prompt("You selected mortgage, is that correct?\n   For Yes type 1\n  For No type 2")
-      y_or_n = gets.chomp
-      if y_or_n == "1"
+    if loan_type == "1"
+      prompt("You selected mortgage, is that correct?\n   For Yes type 1\n   For No type 2")
+      loan_type_confirmation = gets.chomp
+      if loan_type_confirmation == "1"
         confirm = true
-      elsif y_or_n == "2"
+      elsif loan_type_confirmation == "2"
         prompt("Okay, What woud you like then?\n   For mortgage type 1\n   For auto type 2")
-        auto_mortgage = gets.chomp
+        loan_type = gets.chomp
       else
         prompt("Sorry, That is not a valid option.")
       end
-    elsif auto_mortgage == "2"
+    elsif loan_type == "2"
       prompt("You selected auto, is that correct\n   For Yes type 1\n   For No type 2")
-      y_or_n = gets.chomp
-      if y_or_n == "1"
+      loan_type_confirmation = gets.chomp
+      if loan_type_confirmation == "1"
         confirm = true
-      elsif y_or_n == "2"
+      elsif loan_type_confirmation == "2"
         prompt("Okay, What woud you like then?\n   For mortgage type 1\n   For auto type 2")
-        auto_mortgage = gets.chomp
+        loan_type = gets.chomp
       else
         prompt("Sorry, That is not a valid option.")
       end
     else
       prompt("Sorry, That is not a valid option.\n   For mortgage type 1\n   For auto type 2")
-      auto_mortgage = gets.chomp
+      loan_type = gets.chomp
     end
   end
   loop do
     prompt("Please enter the loan amount #{name}. Example 12345.\n   Please do not include '$' or ','.")
     loan_amount = gets.chomp.to_i
     prompt("Great, now I'll need the term of the loan in months")
-    loan_duration_in_months = gets.chomp.to_i
+    months = gets.chomp.to_i
     prompt("And finally I will need the APR")
     prompt("Example for 5% 5")
-    interest_amount = gets.chomp.to_f / 100 / 12
-    if loan_amount == number?(loan_amount) && interest_amount == number?(interest_amount) && loan_duration_in_months == number?(loan_duration_in_months)
-      prompt("Your monthly payment will be $#{fixed_monthly_payment(loan_amount, interest_amount, loan_duration_in_months)}")
+    yearly_interest_rate = gets.chomp.to_f / 100 
+    monthly_interest_rate = yearly_interest_rate / 12
+    if loan_amount == number?(loan_amount) && monthly_interest_rate == number?(monthly_interest_rate) && months == number?(months)
+      prompt("Your monthly payment will be $#{fixed_monthly_payment(loan_amount, monthly_interest_rate, months)}")
       break
     else
       prompt("Sorry, one of your inputs was not a valid number.\n   Please try again.")
     end
   end
   prompt("Would you like to enter another loan?\n   For Yes type 1\n   For No type 2")
-  another_loan = gets.chomp
-  if another_loan == "1"
+  calculate_new_loan = gets.chomp
+  if calculate_new_loan == "1"
     prompt("I am be happy to help you again #{name}!\n   Is this a mortgage or auto loan?\n   For mortgage type 1\n   For auto type 2")
   else
     prompt("Thank you for using the calculator!")
