@@ -55,25 +55,28 @@ loop do
   end
 
   while loan_type == "2"
-      prompt("You selected auto, is that correct\n   For Yes type 1\n   For No type 2")
-      loan_type_confirmation = gets.chomp
+    prompt("You selected auto, is that correct\n   For Yes type 1\n   For No type 2")
+    loan_type_confirmation = gets.chomp
 
-      if loan_type_confirmation == "1"
-        break
-      elsif loan_type_confirmation == "2"
-        prompt("Okay, What woud you like then?\n   For mortgage type 1\n   For auto type 2")
-        loan_type = gets.chomp
-      else
-        prompt("Sorry, That is not a valid option.")
-      end
+    if loan_type_confirmation == "1"
+      break
+    elsif loan_type_confirmation == "2"
+      prompt("Okay, What woud you like then?\n   For mortgage type 1\n   For auto type 2")
+      loan_type = gets.chomp
+    else
+      prompt("Sorry, That is not a valid option.")
+    end
   end
 
-  prompt("Please enter the loan amount #{name}. Example 12345.\n   Please do not include '$' or ','.")
+  prompt("Please enter the loan amount #{name}. Example 12345 or 12345.67\n   Please do not include '$' or ','.")
 
+  loan_amount = ""
+  
   loop do
     loan_amount = gets.chomp
 
     if number?(loan_amount)
+      loan_amount = loan_amount.to_f
       break
     else
       prompt("Sorry that is not a number.\n   Please input a valid number.")
@@ -83,25 +86,30 @@ loop do
 
   prompt("Great, now I'll need the term of the loan in months")
 
+  months = ""
+  
   loop do
     months = gets.chomp
 
     if number?(months)
+      months = months.to_i
       break
     else
       prompt("Sorry that is not a number.\n   Please input the length of the loan in the number of months.")
     end
   end
 
-    prompt("And finally I will need the APR")
-    prompt("Example for 5% type 5 or for 3.5% type 3.5")
+  prompt("And finally I will need the APR")
+  prompt("Example for 5% type 5 or for 3.5% type 3.5")
 
+  yearly_interest_rate = ""
+  monthly_interest_rate = ""
+  
   loop do
-    yearly_interest_rate = gets.chomp.to_f / 100
-    monthly_interest_rate = yearly_interest_rate / 12
+    yearly_interest_rate = gets.chomp
 
-    if number?(monthly_interest_rate)
-      yearly_interest_rate.to_f / 100
+    if number?(yearly_interest_rate)
+      yearly_interest_rate = yearly_interest_rate.to_f / 100
       monthly_interest_rate = yearly_interest_rate / 12
       break
     else
@@ -110,19 +118,13 @@ loop do
     end
   end
 
-    if loan_type == "1"
-      loan_type = "Mortgage"
-    else
-      loan_type = "Auto"
-    end
-
-    if loan_amount == number?(loan_amount) && monthly_interest_rate == number?(monthly_interest_rate) && months == number?(months)
-      prompt("Your monthly #{loan_type} payment will be $#{fixed_monthly_payment(loan_amount, monthly_interest_rate, months)}")
-      break
-    else
-      prompt("Sorry, one of your inputs was not a valid number.\n   Please try again.")
-    end
+  if loan_type == "1"
+    loan_type = "Mortgage"
+  else
+    loan_type = "Auto"
   end
+    
+  prompt("Your monthly #{loan_type} payment will be $#{fixed_monthly_payment(loan_amount, monthly_interest_rate, months)}")
 
   prompt("Would you like to enter another loan?\n   For Yes type 1\n   For No type 2")
   calculate_new_loan = gets.chomp
