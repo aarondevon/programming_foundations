@@ -6,6 +6,24 @@ def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
+def type_saver(str)
+  case str
+  when "r"
+      str = "rock"
+  when "p"
+      str = "paper"
+  when "s"
+      str = "scissors"
+  when "S"
+      str = "spock"
+  when "l"
+      str = "lizard"
+  else
+    str
+  end
+  str
+end
+
 def win?(first, second)
   (first == 'rock' && (second == 'scissors' || second == 'lizard')) ||
     (first == 'paper' && (second == 'rock' || second == 'spock')) ||
@@ -29,6 +47,8 @@ loop do
   loop do
     prompt("Choose one: #{VALID_CHOICES.join(', ')}")
     choice = Kernel.gets().chomp()
+
+    choice = type_saver(choice)
 
     if VALID_CHOICES.include?(choice)
       break
