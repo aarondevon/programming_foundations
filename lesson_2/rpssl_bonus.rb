@@ -1,5 +1,7 @@
 VALID_CHOICES = %w(rock paper scissors spock lizard)
 
+scores = {"player" => 0, "computer" => 0}
+
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
@@ -36,14 +38,31 @@ loop do
   end
 
   computer_choice = VALID_CHOICES.sample
+  
+  # player_score = 0
+  # computer_score = 0
+  
+  
+  
+    if win?(choice, computer_choice)
+      scores["player"] += 1
+    elsif win?(computer_choice, choice)
+      scores["computer"] += 1  
+    end
 
+  
   prompt("You chose: #{choice}; Computer chose: #{computer_choice}")
 
   display_results(choice, computer_choice)
-
-  prompt("Do you want to play again?")
-  answer = Kernel.gets().chomp()
-  break unless answer.downcase().start_with?('y')
+  
+  prompt("#{scores["player"]} #{scores["computer"]}")
+  
+  # prompt("Do you want to play again?")
+  # answer = Kernel.gets().chomp()
+  if scores["player"] == 5 || scores["computer"] == 5
+    break
+  end
+  #break unless answer.downcase().start_with?('y')
 end
 
 prompt("Thank you for playing, Good bye!")
