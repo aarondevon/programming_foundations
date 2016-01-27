@@ -9,19 +9,18 @@ end
 def type_saver(str)
   case str
   when "r"
-      str = "rock"
+    str = "rock"
   when "p"
-      str = "paper"
+    str = "paper"
   when "s"
-      str = "scissors"
+    str = "scissors"
   when "S"
-      str = "spock"
+    str = "spock"
   when "l"
-      str = "lizard"
+    str = "lizard"
   else
     str
   end
-  str
 end
 
 def win?(first, second)
