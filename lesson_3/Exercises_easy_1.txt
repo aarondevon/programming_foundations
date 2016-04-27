@@ -1,14 +1,67 @@
 Question 1
 
-What would you expect the code below to print out?
-numbers = [1, 2, 2, 3]
-numbers.uniq
+  What would you expect the code below to print out?
+  numbers = [1, 2, 2, 3]
+  numbers.uniq
 
-puts numbers
+  puts numbers
 
-Answer: numbers will print 1, 2, 2, 3
-uniq does not modify numbers and creates a new array with uniq numbers [1, 2, 3,]
+  Answer: numbers will print 1, 2, 2, 3
+  uniq does not modify numbers and creates a new array with uniq numbers [1, 2, 3,]
 
 Question 2
 
-Describe the difference between ! and ? in Ruby. And explain what would happen in the following scenarios: 1. what is != and where should you use it? 2. put ! before something, like !user_name 3. put ! after something, like words.uniq! 4. put ? before something 5. put ? after something 6. put !! before something, like !!user_name
+  Describe the difference between ! and ? in Ruby. And explain what would happen in the following scenarios:
+  1. what is != and where should you use it?
+    != means not equal. An example of where I might use it would be 4 != 3
+  2. put ! before something, like !user_name
+    Means not user_name
+  3. put ! after something, like words.uniq!
+    This has nothing to do with Ruby syntax. It is part of the method name. Generally it means that it is a destructive method.
+  4. put ? before something
+    The "?" can be used as the ternary operator. The ternary operator will evaluate what is to the left and if it is true will run the code to the right.
+  5. put ? after something
+    This has nothing to do with Ruby syntax. It is part of the method name. It generally means that the method will return a boolean.
+  6. put !! before something, like !!user_name
+    !! will evaluate whether something is true or false.
+
+Question 3
+
+  Replace the word "important" with "urgent" in this string:
+  advice = "Few things in life are as important as house training your pet dinosaur."
+  def replace_word(str, word_to_change, replacement_word)
+      string_array = str.split(" ")
+      string_array.each do |word|
+        if word == word_to_change
+          puts word_to_change
+          word.replace(replacement_word)
+        end
+      end
+      string_array.join(" ")
+  end
+
+  p replace_word("Few things in life are as important as house training your pet dinosaur.", "important", "urgent")
+
+Question 4
+
+  The Ruby Array class has several methods for removing items from the array. Two of them have very similar names. Let's see how they differ:
+
+  numbers = [1, 2, 3, 4, 5]
+  What does the follow method calls do (assume we reset numbers to the original array between method calls)?
+
+  numbers.delete_at(1)
+    The #delete_at method will delete the specified index or return nil if the index doesn't exist.
+  numbers.delete(1)
+    The #delete method will delete any occurrences of the given argument.
+
+Question 5
+
+  Programmatically determine if 42 lies between 10 and 100.
+  (10..100).include?(42)
+
+Question 6
+
+  Starting with the string:
+
+  famous_words = "seven years ago..."
+  show two different ways to put the expected "Four score and " in front of it.
