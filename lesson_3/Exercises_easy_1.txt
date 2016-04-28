@@ -105,3 +105,34 @@ Question 8
   Make this into an un-nested array.
 
   flinstones = flintstones.flatten
+
+Question 9
+
+  Given the hash below
+
+  flintstones = { "Fred" => 0, "Wilma" => 1, "Barney" => 2, "Betty" => 3, "BamBam" => 4, "Pebbles" => 5 }
+  Turn this into an array containing only two elements: Barney's name and Barney's number
+
+  flintstones_arr = []
+  flintstones.each_pair do |key, value|
+    if key == "Barney"
+      flintstones_arr << key
+      flintstones_arr << value
+    end
+  end
+
+
+Question 10
+
+  Given the array below
+
+  flintstones = ["Fred", "Barney", "Wilma", "Betty", "Pebbles", "BamBam"]
+  Turn this array into a hash where the names are the keys and the values are the positions in the array.
+
+  def flintstones_to_hash(array)
+    flintstones_hash = {}
+    array.each do |element|
+      flintstones_hash[element] = array.index(element)
+    end
+    flintstones_hash
+  end
